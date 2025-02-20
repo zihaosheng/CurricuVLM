@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="CurricuVLM: Towards Safe Autonomous Driving via Personalized Safety-Critical Curriculum Learning with Vision-Language Models">
+    <meta name="keywords"
+          content="Autonomous Driving, Vision-Language Models, Safety-Critical Systems, Curriculum Learning, Reinforcement Learning">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CurricuVLM</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/book.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+<style>
+    .best {
+        background-color: rgb(255, 138, 138, 0.7);
+    }
+
+
+    .second-best {
+        background-color: rgb(255, 145, 0, 0.6);
+    }
+
+    #btt-bttn {
+        display: inline-block;
+        background-color: #209cee;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border-radius: 4px;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        transition: background-color .3s,
+        opacity .5s, visibility .5s;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+    }
+
+    #btt-bttn::after {
+        content: "\f077";
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 2em;
+        line-height: 50px;
+        color: #fff;
+    }
+
+    #btt-bttn:hover {
+        cursor: pointer;
+        background-color: #333;
+    }
+
+    #btt-bttn:active {
+        background-color: #555;
+    }
+
+    #btt-bttn.show {
+        opacity: 1;
+        visibility: visible;
+    }
+</style>
+
+<body>
+<a id="btt-bttn"></a>
+
+<!--Title-->
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-3 publication-title">CurricuVLM: Towards Safe Autonomous Driving via
+                        Personalized Safety-Critical Curriculum Learning with Vision-Language Models</h1>
+                    <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://zihaosheng.github.io/" target="_blank">Zihao Sheng</a><sup>1,†</sup>,</span>
+                        <span class="author-block">
+                <a href="https://github.com/zilin-huang" target="_blank">Zilin Huang</a><sup>1,†</sup>,</span>
+                        <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=hIt7KnUAAAAJ&hl=en" target="_blank">Yansong Qu</a><sup>2</sup>,</span>
+                        <span class="author-block">
+                <a href="https://www.linkedin.com/in/yue-leng-aa8aa363/" target="_blank">Yue Leng</a><sup>3</sup>,</span>
+                        <span class="author-block">
+                <a href="https://www.linkedin.com/in/sruthi-bhavanam-3963489/" target="_blank">Sruthi Bhavanam</a><sup>3</sup>,</span>
+                        <span class="author-block">
+                <a href="https://sky-lab-uw.github.io/" target="_blank">Sikai Chen</a><sup>1,<i class="fa-regular fa-envelope fa-shake"></i></sup>
+              </span>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>University of Wisconsin-Madison</span>,&nbsp;
+                            <span class="author-block"><sup>2</sup>Purdue University</span>,&nbsp;
+                            <span class="author-block"><sup>3</sup>Google</span>
+                            <span class="eql-cntrb"><small><br><sup>†</sup>Indicates Equal Contribution, <sup><i class="fa-regular fa-envelope fa-shake"></i></sup>Corresponding Author</small></span>
+                        </div>
+                    </div>
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                <span class="link-block">
+                  <a href="http://arxiv.org/" target="_blank"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://youtu.be/esuJEABHVj4" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/zihaosheng/CurricuVLM" target="_blank"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--video-->
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <div class="publication-video">
+                        <iframe width="900" height="500" src="https://www.youtube.com/embed/esuJEABHVj4?si=qq7_bYs7AT9mMc1o"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+                <h2 class="subtitle has-text-centered">
+                    To the best of our knowledge, <strong>CurricuVLM</strong> is the first work to utilize
+                    VLMs for dynamic curriculum generation in closed-loop autonomous driving training.
+                </h2>
+        </div>
+    </div>
+</section>
+
+
+<!-- Abstract Section -->
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container"
+             style="max-width: 990px; margin: auto; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+            <h2 class="title is-3" style="text-align: center;">Abstract</h2>
+            <div class="content" style="font-size: 16px; text-align: justify;">
+                Ensuring safety in autonomous driving systems remains a critical challenge, particularly in handling rare but potentially catastrophic safety-critical scenarios. While existing research has explored generating safety-critical scenarios for autonomous vehicle (AV) testing, there is limited work on effectively incorporating these scenarios into policy learning to enhance safety. Furthermore, developing training curricula that adapt to an AV's evolving behavioral patterns and performance bottlenecks remains largely unexplored. To address these challenges, we propose CurricuVLM, a novel framework that leverages Vision-Language Models (VLMs) to enable personalized curriculum learning for autonomous driving agents. Our approach uniquely exploits VLMs' multimodal understanding capabilities to analyze agent behavior, identify performance weaknesses, and dynamically generate tailored training scenarios for curriculum adaptation. Through comprehensive analysis of unsafe driving situations with narrative descriptions, CurricuVLM performs in-depth reasoning to evaluate the AV's capabilities and identify critical behavioral patterns. The framework then synthesizes customized training scenarios targeting these identified limitations, enabling effective and personalized curriculum learning. Extensive experiments on the Waymo Open Motion Dataset show that CurricuVLM outperforms state-of-the-art baselines across both regular and safety-critical scenarios, achieving superior performance in terms of navigation success, driving efficiency, and safety metrics. Further analysis reveals that CurricuVLM serves as a general approach that can be integrated with various RL algorithms to enhance autonomous driving systems. 
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Single Image with Title and Shadowed Container -->
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container"
+             style="max-width: 990px; margin: auto; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); padding: 20px; background-color: white; border-radius: 8px;">
+            <h2 class="title is-3">Motivation</h2>
+            <div class="image-container has-text-centered" style="max-width: 100%; margin: auto;">
+                <img src="static/images/motivation.jpg" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+            </div>
+            <br>
+            <div class="subtitle-container" style="max-width: 100%; margin: auto;">
+                <h4 class="subtitle" style="font-size: 16px; text-align: justify;">
+                    <strong>Comparison of training strategies for autonomous driving agents.</strong>
+                    (a) Pre-generated safety-critical scenarios as static training augmentation, which fails to adapt to
+                    the agent's evolving capabilities;
+                    (b) Conventional curriculum learning with rule-based scenario selection, which lacks personalization
+                    to individual learning bottlenecks;
+                    (c) Our proposed approach using VLMs as observant mentors and curriculum designers for dynamic and
+                    personalized training.
+                </h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Single Image with Title and Shadowed Container -->
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container"
+             style="max-width: 990px; margin: auto; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); padding: 20px; background-color: white; border-radius: 8px;">
+            <h2 class="title is-3">Framework</h2>
+            <div class="image-container has-text-centered" style="max-width: 100%; margin: auto;">
+                <img src="static/images/framework.jpg" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+            </div>
+            <br>
+            <div class="subtitle-container" style="max-width: 100%; margin: auto;">
+                <h4 class="subtitle" style="font-size: 16px; text-align: justify;">
+                    <strong>Overview of CurricuVLM framework.</strong>
+                    (a) RL environment provides state observations and receives control actions from the agent;
+                    (b) Safety-critical event analysis module employs VLM for visual understanding and GPT-4o for
+                    behavioral pattern analysis;
+                    (c) Personalized curriculum adaptation generates safety-critical scenarios by optimizing background
+                    vehicle trajectories;
+                    (d) Dynamic curriculum scheduling mechanism adaptively integrates generated scenarios into the
+                    training process.
+                </h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <h2 class="title is-3">Visualization</h2>
+        <div class="columns is-centered">
+            <div class="column is-full-width" style="max-width: 990px; margin: auto; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); padding: 20px; background-color: white; border-radius: 8px;">
+                <h4 class="title is-4">Case 1: Unprotected Right Turn</h4>
+                <div class="columns">
+                    <div class="column is-6 has-text-centered">
+                        <img src="./static/images/case1-adv-combined.gif" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+                        <p>Before training with <span style="color: purple;">CurricuVLM</span>.</p>
+                    </div>
+                    <div class="column is-6 has-text-centered">
+                        <img src="./static/images/case1-trained-combined.gif" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+                        <p>After training with <span style="color: purple;">CurricuVLM</span>.</p>
+                    </div>
+                </div>
+                <p class="subtitle" style="font-size: 16px; text-align: justify;">
+                    A blue car makes an unprotected right-turning, the untrained agent fails to maintain a safe distance and collides with the turning vehicle. After training with CurricuVLM, the agent learns to proactively adjust its speed and lateral  position, creating a larger safety margin while maintaining efficient progress.
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="columns is-centered">
+            <div class="column is-full-width" style="max-width: 990px; margin: auto; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); padding: 20px; background-color: white; border-radius: 8px;">
+                <h4 class="title is-4">Case 2: Merge</h4>
+                <div class="columns">
+                    <div class="column is-6 has-text-centered">
+                        <img src="./static/images/case2-adv-combined.gif" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+                        <p>Before training with <span style="color: purple;">CurricuVLM</span>.</p>
+                    </div>
+                    <div class="column is-6 has-text-centered">
+                        <img src="./static/images/case2-trained-combined.gif" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+                        <p>After training with <span style="color: purple;">CurricuVLM</span>.</p>
+                    </div>
+                </div>
+                <p class="subtitle" style="font-size: 16px; text-align: justify;">
+                    The agent encounters a merging situation where untrained behavior results in collisions
+                    with other vehicles. After training with CurricuVLM, the agent develops more
+                    sophisticated merging behavior, learning to select a safer lane and dynamically adjust its
+                    speed to avoid potential conflicts with surrounding vehicles.
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="columns is-centered">
+            <div class="column is-full-width" style="max-width: 990px; margin: auto; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); padding: 20px; background-color: white; border-radius: 8px;">
+                <h4 class="title is-4">Case 3: Front Car Deceleration</h4>
+                <div class="columns">
+                    <div class="column is-6 has-text-centered">
+                        <img src="./static/images/case3-adv-combined.gif" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+                        <p>Before training with <span style="color: purple;">CurricuVLM</span>.</p>
+                    </div>
+                    <div class="column is-6 has-text-centered">
+                        <img src="./static/images/case3-trained-combined.gif" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+                        <p>After training with <span style="color: purple;">CurricuVLM</span>.</p>
+                    </div>
+                </div>
+                <p class="subtitle" style="font-size: 16px; text-align: justify;">
+                    This case showcases the agent’s improved response to sudden speed changes from leading vehicles. While the untrained agent fails to
+                    react appropriately to a decelerating vehicle, the trained agent successfully executes a safe lane change maneuver to
+                    maintain smooth traffic flow.
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="columns is-centered">
+            <div class="column is-full-width" style="max-width: 990px; margin: auto; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); padding: 20px; background-color: white; border-radius: 8px;">
+                <h4 class="title is-4">Case 4: Abrupt Lane Intrusion</h4>
+                <div class="columns">
+                    <div class="column is-6 has-text-centered">
+                        <img src="./static/images/case4-adv-combined.gif" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+                        <p>Before training with <span style="color: purple;">CurricuVLM</span>.</p>
+                    </div>
+                    <div class="column is-6 has-text-centered">
+                        <img src="./static/images/case4-trained-combined.gif" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+                        <p>After training with <span style="color: purple;">CurricuVLM</span>.</p>
+                    </div>
+                </div>
+                <p class="subtitle" style="font-size: 16px; text-align: justify;">
+                    The agent learns to anticipate and respond to potential lane change conflicts. When confronted with an adjacent vehicle’s lane change, the trained agent
+                    demonstrates sophisticated decision-making by accelerating and shifting to a safer lane while maintaining appropriate
+                    following distances.
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="columns is-centered">
+            <div class="column is-full-width" style="max-width: 990px; margin: auto; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); padding: 20px; background-color: white; border-radius: 8px;">
+                <h4 class="title is-4">Case 5: Cut-in Lane Collision</h4>
+                <div class="columns">
+                    <div class="column is-6 has-text-centered">
+                        <img src="./static/images/case5-adv-combined.gif" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+                        <p>Before training with <span style="color: purple;">CurricuVLM</span>.</p>
+                    </div>
+                    <div class="column is-6 has-text-centered">
+                        <img src="./static/images/case5-trained-combined.gif" alt="Descriptive Alt Text" style="width: 100%; height: auto;"/>
+                        <p>After training with <span style="color: purple;">CurricuVLM</span>.</p>
+                    </div>
+                </div>
+                <p class="subtitle" style="font-size: 16px; text-align: justify;">
+                    In this scenario, a vehicle from an adjacent lane cuts in abruptly in front of the red car,
+                    leading to a collision due to insufficient time and space for the red car to react.
+                    After training with CurricuVLM, the agent learns to anticipate such abrupt cut-ins,
+                    proactively adjusting its speed and maintaining a safer following distance.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+  <!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <div style="position: relative;">
+        <button id="copyButton" style="position: absolute; top: 0; right: 0;">Copy</button>
+        <pre><code id="bibtexCode">@article{sheng2025curricuvlm,
+  title={CurricuVLM: Towards Safe Autonomous Driving via Personalized Safety-Critical Curriculum Learning with Vision-Language Models},
+  author={Sheng, Zihao},
+  journal={arXiv preprint},
+  year={2025}
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    var copyButton = document.getElementById("copyButton");
+
+    copyButton.addEventListener("click", function () {
+      var codeElement = document.getElementById("bibtexCode");
+      var textToCopy = codeElement.textContent;
+
+      var textarea = document.createElement("textarea");
+      textarea.value = textToCopy;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+
+      copyButton.textContent = "✓ Copied!";
+
+      setTimeout(function () {
+        copyButton.textContent = "Copy";
+      }, 2000); // Reset the button text after 2 seconds (adjust as needed)
+    });
+  </script>
+  <!--End BibTex citation -->
+
+
+<!--Visitor Map-->
+
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <a class="icon-link" href="http://arxiv.org/" target="_blank">
+                <i class="fas fa-file-pdf"></i>
+            </a>
+            <a class="icon-link" target="_blank" href="https://github.com/zihaosheng/CurricuVLM" class="external-link"
+               disabled>
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <div class="container has-text-centered">
+        <a href="https://www.easycounter.com/">
+            <img src="https://www.easycounter.com/counter.php?zihaosheng"
+            border="0" alt="Web Site Hit Counter"></a>
+             visitors since January 2025.
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p class="footer-paragraph">
+                        This page is adapted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies
+                        project
+                        page</a> and is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+<script>
+    var btn = $('#btt-bttn');
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop: 0}, '300');
+    });
+
+</script>
+
+</html>
