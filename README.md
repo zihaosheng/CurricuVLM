@@ -1,8 +1,11 @@
 <div id="top" align="center">
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=soft&height=80&color=timeGradient&text=CurricuVLM:%20Towards%20Safe%20Autonomous%20Driving%20via%20Personalized%20Safety-Critical-nl-Curriculum%20Learning%20with%20Vision-Language%20Models&section=header&fontSize=20" alt="Header Image">
+  <a href="https://arxiv.org/abs/">
+    <img src="https://capsule-render.vercel.app/api?type=soft&height=80&color=timeGradient&text=CurricuVLM:%20Towards%20Safe%20Autonomous%20Driving%20via%20Personalized%20Safety-Critical-nl-Curriculum%20Learning%20with%20Vision-Language%20Models&section=header&fontSize=20" alt="Header Image">
+  </a>
 </p>
+
 <p align="center">
   <strong>
     <h3 align="center">
@@ -16,9 +19,9 @@
 </div>
 
 
-> We are currently in the process of organizing our code and preparing it for release.
+> **We are currently in the process of organizing our code and preparing it for release.**
 >
-> Stay tuned for our upcoming open-source project on GitHub!
+> **Stay tuned for our upcoming open-source project on GitHub!**
 
 -----
 
