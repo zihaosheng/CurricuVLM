@@ -29,8 +29,8 @@
 
 > **[CurricuVLM: Towards Safe Autonomous Driving via Personalized Safety-Critical Curriculum Learning with Vision-Language Models](https://arxiv.org/abs/)**
 >
-> [Zihao Sheng](https://scholar.google.com/citations?user=3T-SILsAAAAJ&hl=en)<sup>1,†</sup>,
-> [Zilin Huang](https://scholar.google.com/citations?user=RgO7ppoAAAAJ&hl=en)<sup>1,†</sup>,
+> [Zihao Sheng](https://scholar.google.com/citations?user=3T-SILsAAAAJ&hl=en)<sup>1,\*</sup>,
+> [Zilin Huang](https://scholar.google.com/citations?user=RgO7ppoAAAAJ&hl=en)<sup>1,\*</sup>,
 > [Yansong Qu](https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=hIt7KnUAAAAJ)<sup>2</sup>,
 > [Yue Leng](https://www.linkedin.com/in/yue-leng-aa8aa363/)<sup>3</sup>,
 > [Sruthi Bhavanam](https://www.linkedin.com/in/sruthi-bhavanam-3963489/)<sup>3</sup>,
@@ -38,7 +38,7 @@
 >
 > <sup>1</sup>University of Wisconsin-Madison, <sup>2</sup>Purdue University, <sup>3</sup>Google
 >
-> <sup>†</sup>Equally Contributing First Authors,
+> <sup>\*</sup>Equally Contributing First Authors,
 > <sup>✉</sup>Corresponding Author
 > <br/>
 
