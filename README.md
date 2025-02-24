@@ -1,7 +1,7 @@
 <div id="top" align="center">
 
 <p align="center">
-  <a href="https://arxiv.org/abs/">
+  <a href="https://arxiv.org/abs/2502.15119">
     <img src="https://capsule-render.vercel.app/api?type=soft&height=80&color=timeGradient&text=CurricuVLM:%20Towards%20Safe%20Autonomous%20Driving%20via%20Personalized%20Safety-Critical-nl-Curriculum%20Learning%20with%20Vision-Language%20Models&section=header&fontSize=20" alt="Header Image">
   </a>
 </p>
@@ -10,7 +10,7 @@
   <strong>
     <h3 align="center">
       <a href="https://zihaosheng.github.io/CurricuVLM/">Website</a> | 
-      <a href="https://arxiv.org/abs/">Paper</a> | 
+      <a href="https://arxiv.org/abs/2502.15119">Paper</a> | 
       <a href="https://www.youtube.com/watch?v=esuJEABHVj4">Video</a>  
     </h3>
   </strong>
@@ -27,7 +27,7 @@
 
 <br/>
 
-> **[CurricuVLM: Towards Safe Autonomous Driving via Personalized Safety-Critical Curriculum Learning with Vision-Language Models](https://arxiv.org/abs/)**
+> **[CurricuVLM: Towards Safe Autonomous Driving via Personalized Safety-Critical Curriculum Learning with Vision-Language Models](https://arxiv.org/abs/2502.15119)**
 >
 > [Zihao Sheng](https://scholar.google.com/citations?user=3T-SILsAAAAJ&hl=en)<sup>1,\*</sup>,
 > [Zilin Huang](https://scholar.google.com/citations?user=RgO7ppoAAAAJ&hl=en)<sup>1,\*</sup>,
