@@ -19,9 +19,9 @@
 </div>
 
 
-> **We are currently in the process of organizing our code and preparing it for release.**
+> **We are currently in the process of organizing our code, and will release the code on GitHub upon acceptance of the paper.**
 >
-> **Stay tuned for our upcoming open-source project on GitHub!**
+> **Stay tuned for updates!**
 
 -----
 
@@ -42,7 +42,7 @@
 > <sup>✉</sup>Corresponding Author
 > <br/>
 
-## 💡 Highlights <a name="highlight"></a>
+## 😮 Highlights <a name="highlight"></a>
 🔥 To the best of our knowledge, **CurricuVLM** is the first work to utilize VLMs for dynamic curriculum generation in closed-loop autonomous driving training.
 
 🏁 **CurricuVLM** outperforms state-of-the-art baselines, across both regular and safety-critical scenarios, achieving superior performance in terms of navigation success, driving efficiency, and safety metrics..
@@ -56,3 +56,16 @@
 |                                                       Case 1                                                        |                                            Case 2                                            |                                            Case 3                                            |                                            Case 4                                            |                                           Case 5                                            |
 |:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------:|
 | ![Route 6](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case1-trained-combined.gif) | ![Route 7](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case2-trained-combined.gif) | ![Route 8](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case3-trained-combined.gif) | ![Route 9](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case4-trained-combined.gif) | ![Case 5](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case5-trained-combined.gif) |
+
+## 🎯 Citation <a name="citation"></a>
+
+If you find CurricuVLM useful for your research, please consider giving us a star 🌟 and citing our paper:
+
+```BibTeX
+@article{sheng2025curricuvlm,
+  title={CurricuVLM: Towards Safe Autonomous Driving via Personalized Safety-Critical Curriculum Learning with Vision-Language Models},
+  author={Sheng, Zihao and Huang, Zilin and Qu, Yansong and Leng, Yue and Bhavanam, Sruthi and Chen, Sikai},
+  journal={arXiv preprint arXiv:2502.15119},
+  year={2025}
+}
+```
