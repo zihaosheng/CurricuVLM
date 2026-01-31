@@ -40,8 +40,7 @@
 
 ## 🛠️ Getting Started <a name="setup"></a>
 
-
-Create a conda env and install the requirements:
+1. Create a conda env and install the requirements:
 ```shell
 # Clone the repo
 git clone https://github.com/zihaosheng/CurricuVLM.git
@@ -56,6 +55,17 @@ pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 torchaudio==0.12.0 --e
 
 # Install the requirements
 pip install -r requirements.txt
+```
+2. Download the pre-trained checkpoint and WOMD scene data from [link](https://github.com/zihaosheng/CurricuVLM/releases/tag/v0.0.0). Place them in the following structure:
+
+```
+CurricuVLM
+└── advgen
+    └── pretrained
+    	└── densetnt.bin    
+└── raw_scenes_500
+└── LICENSE
+...
 ```
 
 ## Training Baselines
