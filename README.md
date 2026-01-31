@@ -74,12 +74,12 @@ CurricuVLM
 python gpt_RLtrain.py --seed=123 --mode=gpt --save_model --openai_key YOUR_OPENAI_KEY
 ```
 ### RL baselines
-SAC/PPO
+1. SAC/PPO
 ```bash
 python run_baselines/sb3_SACtrain.py --seed=123 --mode=replay --save_model
 python run_baselines/sb3_PPOtrain.py --seed=123 --mode=replay --save_model
 ```
-For safe RL, first copy `env_cfgs` from [omnisafe](https://github.com/PKU-Alignment/omnisafe/blob/15603dd7a654a991d0a4648216b69d60b81a6366/omnisafe/configs/off-policy/SACLag.yaml#L276) and add to the config files in  `~/miniconda3/envs/curricuvlm/lib/python3.9/site-packages/omnisafe/configs/off-policy/YOUR_ALGO.yaml`
+2. For safe RL, first copy `env_cfgs` from [omnisafe](https://github.com/PKU-Alignment/omnisafe/blob/15603dd7a654a991d0a4648216b69d60b81a6366/omnisafe/configs/off-policy/SACLag.yaml#L276) and add to the config files in  `~/miniconda3/envs/curricuvlm/lib/python3.9/site-packages/omnisafe/configs/off-policy/YOUR_ALGO.yaml`
 ```bash
 python run_baselines/omnisafe_SACPID.py --seed=123 --mode=replay --save_model
 python run_baselines/omnisafe_TD3PID.py --seed=123 --mode=replay --save_model
