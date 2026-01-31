@@ -1,0 +1,3 @@
+from metadrive.manager.scenario_data_manager import ScenarioDataManager
+
+WaymoDataManager = ScenarioDataManager

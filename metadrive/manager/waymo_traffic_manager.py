@@ -1,0 +1,3 @@
+from metadrive.manager.scenario_traffic_manager import ScenarioTrafficManager
+
+WaymoTrafficManager = ScenarioTrafficManager

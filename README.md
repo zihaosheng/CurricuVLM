@@ -84,3 +84,9 @@ If you find CurricuVLM useful for your research, please consider giving us a sta
   year={2025}
 }
 ```
+
+## Acknowledgements
+
+This project builds upon several outstanding open-source projects. 
+We would like to thank the authors and contributors of [MetaDrive](https://github.com/metadriverse/metadrive), [CAT](https://github.com/metadriverse/cat), [OmniSafe](https://github.com/PKU-Alignment/omnisafe), [Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3) for making their code and tools publicly available.
+
