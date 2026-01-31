@@ -93,6 +93,11 @@ pip install imitation==1.0.0 --no-deps
 tar -xzvf expert_data.tar.gz
 ```
 
+You can also run the following command to collect your own expert demonstration data:
+```bash
+python collect_expert_data_set.py
+```
+
 ```bash
 python run_baselines/imitation_BC.py --seed=123 --save_model
 python run_baselines/imitation_GAIL.py --seed=123 --save_model
