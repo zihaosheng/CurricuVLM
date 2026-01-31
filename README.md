@@ -65,7 +65,7 @@ SAC/PPO
 python sb3_SACtrain.py --seed=123 --mode=replay --save_model
 python sb3_PPOtrain.py --seed=123 --mode=replay --save_model
 ```
-For safe RL, first copy `env_cfgs` from https://github.com/PKU-Alignment/omnisafe/blob/15603dd7a654a991d0a4648216b69d60b81a6366/omnisafe/configs/off-policy/SACLag.yaml#L276 and add to the config files in  `~/miniconda3/envs/curricuvlm/lib/python3.9/site-packages/omnisafe/configs/off-policy/YOUR_ALGO.yaml`
+For safe RL, first copy `env_cfgs` from [omnisafe](https://github.com/PKU-Alignment/omnisafe/blob/15603dd7a654a991d0a4648216b69d60b81a6366/omnisafe/configs/off-policy/SACLag.yaml#L276) and add to the config files in  `~/miniconda3/envs/curricuvlm/lib/python3.9/site-packages/omnisafe/configs/off-policy/YOUR_ALGO.yaml`
 ```bash
 python omnisafe_SACPID.py --seed=123 --mode=replay --save_model
 python omnisafe_TD3PID.py --seed=123 --mode=replay --save_model
