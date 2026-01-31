@@ -68,31 +68,36 @@ CurricuVLM
 ...
 ```
 
-## Training Baselines
+## Training
+### CurricuVLM
+```bash
+python gpt_RLtrain.py --seed=123 --mode=gpt --save_model --openai_key YOUR_OPENAI_KEY
+```
 ### RL baselines
 SAC/PPO
 ```bash
-python sb3_SACtrain.py --seed=123 --mode=replay --save_model
-python sb3_PPOtrain.py --seed=123 --mode=replay --save_model
+python run_baselines/sb3_SACtrain.py --seed=123 --mode=replay --save_model
+python run_baselines/sb3_PPOtrain.py --seed=123 --mode=replay --save_model
 ```
 For safe RL, first copy `env_cfgs` from [omnisafe](https://github.com/PKU-Alignment/omnisafe/blob/15603dd7a654a991d0a4648216b69d60b81a6366/omnisafe/configs/off-policy/SACLag.yaml#L276) and add to the config files in  `~/miniconda3/envs/curricuvlm/lib/python3.9/site-packages/omnisafe/configs/off-policy/YOUR_ALGO.yaml`
 ```bash
-python omnisafe_SACPID.py --seed=123 --mode=replay --save_model
-python omnisafe_TD3PID.py --seed=123 --mode=replay --save_model
+python run_baselines/omnisafe_SACPID.py --seed=123 --mode=replay --save_model
+python run_baselines/omnisafe_TD3PID.py --seed=123 --mode=replay --save_model
 ```
 ### IL baselines
 Install the following package and untar [expert_data.tar.gz](https://github.com/zihaosheng/CurricuVLM/releases/tag/v0.0.0).
 ```bash
 pip install imitation==1.0.0 --no-deps
+
 # Extract the archive
 tar -xzvf expert_data.tar.gz
 ```
 
 ```bash
-python imitation_BC.py --seed=123 --save_model
-python imitation_GAIL.py --seed=3 --save_model
-python imitation_AIRL.py --seed=3 --save_model
-python imitation_SQIL.py --seed=3 --save_model
+python run_baselines/imitation_BC.py --seed=123 --save_model
+python run_baselines/imitation_GAIL.py --seed=123 --save_model
+python run_baselines/imitation_AIRL.py --seed=123 --save_model
+python run_baselines/imitation_SQIL.py --seed=123 --save_model
 ```
 
 ## 🎯 Citation <a name="citation"></a>
