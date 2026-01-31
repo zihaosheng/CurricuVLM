@@ -60,7 +60,10 @@ pip install -r requirements.txt
 
 ## Training Baselines
 ### RL baselines
-
+```bash
+python sb3_SACtrain.py --seed=123 --mode=replay --save_model
+python sb3_PPOtrain.py --seed=123 --mode=replay --save_model
+```
 ### IL baselines
 
 ## 🎯 Citation <a name="citation"></a>
