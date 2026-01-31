@@ -19,28 +19,9 @@
 </div>
 
 
-> **We are currently in the process of organizing our code, and will release the code on GitHub upon acceptance of the paper.**
->
-> **Stay tuned for updates!**
+## 📢 News
+- **2026.01**: 🔥🔥 **CurricuVLM** has been accepted to *Transportation Research Part C: Emerging Technologies*! We will release the code soon!
 
------
-
-<br/>
-
-> **[CurricuVLM: Towards Safe Autonomous Driving via Personalized Safety-Critical Curriculum Learning with Vision-Language Models](https://arxiv.org/abs/2502.15119)**
->
-> [Zihao Sheng](https://scholar.google.com/citations?user=3T-SILsAAAAJ&hl=en)<sup>1,\*</sup>,
-> [Zilin Huang](https://scholar.google.com/citations?user=RgO7ppoAAAAJ&hl=en)<sup>1,\*</sup>,
-> [Yansong Qu](https://scholar.google.com/citations?view_op=list_works&hl=zh-CN&user=hIt7KnUAAAAJ)<sup>2</sup>,
-> [Yue Leng](https://www.linkedin.com/in/yue-leng-aa8aa363/)<sup>3</sup>,
-> [Sruthi Bhavanam](https://www.linkedin.com/in/sruthi-bhavanam-3963489/)<sup>3</sup>,
-> [Sikai Chen](https://scholar.google.com/citations?user=DPN2wc4AAAAJ&hl=en)<sup>1,✉</sup><br>
->
-> <sup>1</sup>University of Wisconsin-Madison, <sup>2</sup>Purdue University, <sup>3</sup>Google
->
-> <sup>\*</sup>Equally Contributing First Authors,
-> <sup>✉</sup>Corresponding Author
-> <br/>
 
 ## 😮 Highlights <a name="highlight"></a>
 🔥 To the best of our knowledge, **CurricuVLM** is the first work to utilize VLMs for dynamic curriculum generation in closed-loop autonomous driving training.
