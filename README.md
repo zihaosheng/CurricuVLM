@@ -39,9 +39,9 @@
 | ![Route 6](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case1-trained-combined.gif) | ![Route 7](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case2-trained-combined.gif) | ![Route 8](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case3-trained-combined.gif) | ![Route 9](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case4-trained-combined.gif) | ![Case 5](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case5-trained-combined.gif) |
 
 
-# 🛠️ Installation
+## 🛠️ Installation
 
-## 1. Environment Setup
+### 1. Environment Setup
 
 Clone the repository and create a dedicated conda environment:
 
@@ -66,7 +66,7 @@ pip install -r requirements.txt
 ```
 
 
-## 2. Pre-trained Models and Dataset
+### 2. Pre-trained Models and Dataset
 
 Download the pre-trained checkpoint and WOMD scene data from the
 [release page](https://github.com/zihaosheng/CurricuVLM/releases/tag/v0.0.0).
@@ -84,9 +84,9 @@ CurricuVLM/
 ```
 
 
-# 🚀 Training
+## 🚀 Training
 
-## 1. CurricuVLM
+### 1. CurricuVLM
 
 ```bash
 python gpt_RLtrain.py \
@@ -96,16 +96,16 @@ python gpt_RLtrain.py \
     --openai_key YOUR_OPENAI_KEY
 ```
 
-## 2. RL Baselines
+### 2. RL Baselines
 
-### (a) SAC / PPO (SB3)
+#### (a) SAC / PPO (SB3)
 
 ```bash
 python run_baselines/sb3_SACtrain.py --seed 123 --mode replay --save_model
 python run_baselines/sb3_PPOtrain.py --seed 123 --mode replay --save_model
 ```
 
-### (b) Safe RL (OmniSafe)
+#### (b) Safe RL (OmniSafe)
 
 Before running safe RL baselines, copy the required `env_cfgs` from the
 [OmniSafe configuration file](https://github.com/PKU-Alignment/omnisafe/blob/15603dd7a654a991d0a4648216b69d60b81a6366/omnisafe/configs/off-policy/SACLag.yaml#L276):
@@ -127,9 +127,9 @@ python run_baselines/omnisafe_SACPID.py --seed 123 --mode replay --save_model
 python run_baselines/omnisafe_TD3PID.py --seed 123 --mode replay --save_model
 ```
 
-## 3. Imitation Learning Baselines
+### 3. Imitation Learning Baselines
 
-### (a) Install Dependencies
+#### (a) Install Dependencies
 
 ```bash
 pip install imitation==1.0.0 --no-deps
@@ -142,14 +142,14 @@ Download and extract expert demonstrations from the
 tar -xzvf expert_data.tar.gz
 ```
 
-### (b) Collect Expert Demonstrations (Optional)
+#### (b) Collect Expert Demonstrations (Optional)
 You can also run the following command to collect your own expert demonstration data:
 
 ```bash
 python collect_expert_data_set.py
 ```
 
-### (c) Training
+#### (c) Training
 
 ```bash
 python run_baselines/imitation_BC.py   --seed 123 --save_model
@@ -171,6 +171,6 @@ If you find CurricuVLM useful for your research, please consider giving us a sta
 }
 ```
 
-# 🙏 Acknowledgements
+## 🙏 Acknowledgements
 
 This project builds upon several excellent open-source frameworks: [MetaDrive](https://github.com/metadriverse/metadrive), [CAT](https://github.com/metadriverse/cat), [OmniSafe](https://github.com/PKU-Alignment/omnisafe), [Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3), [Imitation](https://github.com/HumanCompatibleAI/imitation). We sincerely thank the authors and contributors for making their code publicly available.
