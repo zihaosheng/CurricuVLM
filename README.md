@@ -71,6 +71,19 @@ python omnisafe_SACPID.py --seed=123 --mode=replay --save_model
 python omnisafe_TD3PID.py --seed=123 --mode=replay --save_model
 ```
 ### IL baselines
+Install the following package and untar [expert_data.tar.gz](https://github.com/zihaosheng/CurricuVLM/releases/tag/v0.0.0).
+```bash
+pip install imitation==1.0.0 --no-deps
+# Extract the archive
+tar -xzvf expert_data.tar.gz
+```
+
+```bash
+python imitation_BC.py --seed=123 --save_model
+python imitation_GAIL.py --seed=3 --save_model
+python imitation_AIRL.py --seed=3 --save_model
+python imitation_SQIL.py --seed=3 --save_model
+```
 
 ## 🎯 Citation <a name="citation"></a>
 
