@@ -57,6 +57,31 @@
 |:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------:|
 | ![Route 6](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case1-trained-combined.gif) | ![Route 7](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case2-trained-combined.gif) | ![Route 8](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case3-trained-combined.gif) | ![Route 9](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case4-trained-combined.gif) | ![Case 5](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case5-trained-combined.gif) |
 
+## 🛠️ Getting Started <a name="setup"></a>
+
+
+Create a conda env and install the requirements:
+```shell
+# Clone the repo
+git clone https://github.com/zihaosheng/CurricuVLM.git
+cd CurricuVLM
+
+# Create a conda env
+conda create -y -n curricuvlm python=3.9
+conda activate curricuvlm
+
+# Install PyTorch
+pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu116
+
+# Install the requirements
+pip install -r requirements.txt
+```
+
+## Training Baselines
+### RL baselines
+
+### IL baselines
+
 ## 🎯 Citation <a name="citation"></a>
 
 If you find CurricuVLM useful for your research, please consider giving us a star 🌟 and citing our paper:
