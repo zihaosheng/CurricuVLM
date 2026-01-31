@@ -60,9 +60,15 @@ pip install -r requirements.txt
 
 ## Training Baselines
 ### RL baselines
+SAC/PPO
 ```bash
 python sb3_SACtrain.py --seed=123 --mode=replay --save_model
 python sb3_PPOtrain.py --seed=123 --mode=replay --save_model
+```
+Safe RL
+```bash
+python omnisafe_SACPID.py --seed=123 --mode=replay --save_model
+python omnisafe_TD3PID.py --seed=123 --mode=replay --save_model
 ```
 ### IL baselines
 

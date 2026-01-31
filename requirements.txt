@@ -19,5 +19,6 @@ waymo-open-dataset-tf-2-11-0==1.5.0
 stable-baselines3==2.0.0
 gymnasium==0.28.1
 shimmy==1.3.0
+omnisafe==0.5.0
 # torch==1.12.0+cu116
 # torchvision==0.13.0+cu116
