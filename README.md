@@ -38,75 +38,127 @@
 |:--------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------:|
 | ![Route 6](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case1-trained-combined.gif) | ![Route 7](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case2-trained-combined.gif) | ![Route 8](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case3-trained-combined.gif) | ![Route 9](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case4-trained-combined.gif) | ![Case 5](https://raw.githubusercontent.com/zihaosheng/CurricuVLM/html/static/images/case5-trained-combined.gif) |
 
-## 🛠️ Getting Started <a name="setup"></a>
 
-1. Create a conda env and install the requirements:
-```shell
-# Clone the repo
+# 🛠️ Installation
+
+## 1. Environment Setup
+
+Clone the repository and create a dedicated conda environment:
+
+```bash
 git clone https://github.com/zihaosheng/CurricuVLM.git
 cd CurricuVLM
 
-# Create a conda env
 conda create -y -n curricuvlm python=3.9
 conda activate curricuvlm
+```
 
-# Install PyTorch
+Install PyTorch (CUDA 11.6):
+
+```bash
 pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu116
+```
 
-# Install the requirements
+Install the remaining dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
-2. Download the pre-trained checkpoint and WOMD scene data from [link](https://github.com/zihaosheng/CurricuVLM/releases/tag/v0.0.0). Place them in the following structure:
+
+
+## 2. Pre-trained Models and Dataset
+
+Download the pre-trained checkpoint and WOMD scene data from the
+[release page](https://github.com/zihaosheng/CurricuVLM/releases/tag/v0.0.0).
+
+Organize the directory structure as follows:
 
 ```
-CurricuVLM
-└── advgen
-    └── pretrained
-    	└── densetnt.bin    
-└── raw_scenes_500
-└── LICENSE
-...
+CurricuVLM/
+├── advgen/
+│   └── pretrained/
+│       └── densetnt.bin
+├── raw_scenes_500/
+├── LICENSE
+└── ...
 ```
 
-## Training
-### CurricuVLM
+
+# 🚀 Training
+
+## 1. CurricuVLM
+
 ```bash
-python gpt_RLtrain.py --seed=123 --mode=gpt --save_model --openai_key YOUR_OPENAI_KEY
+python gpt_RLtrain.py \
+    --seed 123 \
+    --mode gpt \
+    --save_model \
+    --openai_key YOUR_OPENAI_KEY
 ```
-### RL baselines
-1. SAC/PPO
+
+## 2. RL Baselines
+
+### (a) SAC / PPO (SB3)
+
 ```bash
-python run_baselines/sb3_SACtrain.py --seed=123 --mode=replay --save_model
-python run_baselines/sb3_PPOtrain.py --seed=123 --mode=replay --save_model
+python run_baselines/sb3_SACtrain.py --seed 123 --mode replay --save_model
+python run_baselines/sb3_PPOtrain.py --seed 123 --mode replay --save_model
 ```
-2. For safe RL, first copy `env_cfgs` from [omnisafe](https://github.com/PKU-Alignment/omnisafe/blob/15603dd7a654a991d0a4648216b69d60b81a6366/omnisafe/configs/off-policy/SACLag.yaml#L276) and add to the config files in  `~/miniconda3/envs/curricuvlm/lib/python3.9/site-packages/omnisafe/configs/off-policy/YOUR_ALGO.yaml`
+
+### (b) Safe RL (OmniSafe)
+
+Before running safe RL baselines, copy the required `env_cfgs` from the
+[OmniSafe configuration file](https://github.com/PKU-Alignment/omnisafe/blob/15603dd7a654a991d0a4648216b69d60b81a6366/omnisafe/configs/off-policy/SACLag.yaml#L276):
+
+```
+omnisafe/configs/off-policy/SACLag.yaml
+```
+
+and append it to:
+
+```
+~/miniconda3/envs/curricuvlm/lib/python3.9/site-packages/omnisafe/configs/off-policy/YOUR_ALGO.yaml
+```
+
+Then run:
+
 ```bash
-python run_baselines/omnisafe_SACPID.py --seed=123 --mode=replay --save_model
-python run_baselines/omnisafe_TD3PID.py --seed=123 --mode=replay --save_model
+python run_baselines/omnisafe_SACPID.py --seed 123 --mode replay --save_model
+python run_baselines/omnisafe_TD3PID.py --seed 123 --mode replay --save_model
 ```
-### IL baselines
-1. Install the following package and untar [expert_data.tar.gz](https://github.com/zihaosheng/CurricuVLM/releases/tag/v0.0.0).
+
+## 3. Imitation Learning Baselines
+
+### (a) Install Dependencies
+
 ```bash
 pip install imitation==1.0.0 --no-deps
+```
 
-# Extract the archive
+Download and extract expert demonstrations from the
+[release page](https://github.com/zihaosheng/CurricuVLM/releases/tag/v0.0.0):
+
+```bash
 tar -xzvf expert_data.tar.gz
 ```
 
-2. You can also run the following command to collect your own expert demonstration data:
+### (b) Collect Expert Demonstrations (Optional)
+You can also run the following command to collect your own expert demonstration data:
+
 ```bash
 python collect_expert_data_set.py
 ```
 
-3. Training
+### (c) Training
+
 ```bash
-python run_baselines/imitation_BC.py --seed=123 --save_model
-python run_baselines/imitation_GAIL.py --seed=123 --save_model
-python run_baselines/imitation_AIRL.py --seed=123 --save_model
-python run_baselines/imitation_SQIL.py --seed=123 --save_model
+python run_baselines/imitation_BC.py   --seed 123 --save_model
+python run_baselines/imitation_GAIL.py --seed 123 --save_model
+python run_baselines/imitation_AIRL.py --seed 123 --save_model
+python run_baselines/imitation_SQIL.py --seed 123 --save_model
 ```
 
-## 🎯 Citation <a name="citation"></a>
+## 📖 Citation
 
 If you find CurricuVLM useful for your research, please consider giving us a star 🌟 and citing our paper:
 
@@ -115,12 +167,10 @@ If you find CurricuVLM useful for your research, please consider giving us a sta
   title={CurricuVLM: Towards Safe Autonomous Driving via Personalized Safety-Critical Curriculum Learning with Vision-Language Models},
   author={Sheng, Zihao and Huang, Zilin and Qu, Yansong and Leng, Yue and Bhavanam, Sruthi and Chen, Sikai},
   journal={arXiv preprint arXiv:2502.15119},
-  year={2025}
+  year={2026}
 }
 ```
 
-## Acknowledgements
+# 🙏 Acknowledgements
 
-This project builds upon several outstanding open-source projects. 
-We would like to thank the authors and contributors of [MetaDrive](https://github.com/metadriverse/metadrive), [CAT](https://github.com/metadriverse/cat), [OmniSafe](https://github.com/PKU-Alignment/omnisafe), [Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3), [Imitation](https://github.com/HumanCompatibleAI/imitation) for making their code and tools publicly available.
-
+This project builds upon several excellent open-source frameworks: [MetaDrive](https://github.com/metadriverse/metadrive), [CAT](https://github.com/metadriverse/cat), [OmniSafe](https://github.com/PKU-Alignment/omnisafe), [Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3), [Imitation](https://github.com/HumanCompatibleAI/imitation). We sincerely thank the authors and contributors for making their code publicly available.
