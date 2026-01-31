@@ -23,7 +23,7 @@
 - **2026.01**: 🔥🔥 **CurricuVLM** has been accepted to *Transportation Research Part C: Emerging Technologies*! We will release the code soon!
 
 
-## 😮 Highlights <a name="highlight"></a>
+## 😎 Highlights <a name="highlight"></a>
 🔥 To the best of our knowledge, **CurricuVLM** is the first work to utilize VLMs for dynamic curriculum generation in closed-loop autonomous driving training.
 
 🏁 **CurricuVLM** outperforms state-of-the-art baselines, across both regular and safety-critical scenarios, achieving superior performance in terms of navigation success, driving efficiency, and safety metrics..
@@ -166,7 +166,7 @@ If you find CurricuVLM useful for your research, please consider giving us a sta
 @article{sheng2025curricuvlm,
   title={CurricuVLM: Towards Safe Autonomous Driving via Personalized Safety-Critical Curriculum Learning with Vision-Language Models},
   author={Sheng, Zihao and Huang, Zilin and Qu, Yansong and Leng, Yue and Bhavanam, Sruthi and Chen, Sikai},
-  journal={arXiv preprint arXiv:2502.15119},
+  journal={Transportation Research Part C: Emerging Technologies},
   year={2026}
 }
 ```
