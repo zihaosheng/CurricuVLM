@@ -281,16 +281,15 @@ if __name__ == "__main__":
             'use_wandb': False,
             'use_tensorboard': True,
         },
-        '"../raw_scenes_500"': {
+        'env_cfgs': {
             'meta_drive_config': config_train
         }
     }
     test_cfgs = {
-        '"../raw_scenes_500"': {
+        'env_cfgs': {
             'meta_drive_config': config_test
         }
     }
-    from omnisafe.algorithms.off_policy.sac import SAC
 
     # policy = SAC(env_id=env_id, cfgs=)
     agent = omnisafe.Agent(algo='SACPID', env_id=env_id, custom_cfgs=custom_cfgs)
@@ -434,7 +433,7 @@ if __name__ == "__main__":
                         if t - last_eval_step > args.eval_freq:
                             last_eval_step = t
                             agent.agent._env.close()
-                            eval_env = SafetyMetaDriveEnv(env_id=env_id, **test_cfgs['"../raw_scenes_500"'])
+                            eval_env = SafetyMetaDriveEnv(env_id=env_id, **test_cfgs['env_cfgs'])
                             eval_route_completion_normal, \
                             eval_crash_rate_normal, \
                             eval_out_of_road_rate_normal, \
