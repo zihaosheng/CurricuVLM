@@ -85,7 +85,7 @@ python run_baselines/omnisafe_SACPID.py --seed=123 --mode=replay --save_model
 python run_baselines/omnisafe_TD3PID.py --seed=123 --mode=replay --save_model
 ```
 ### IL baselines
-Install the following package and untar [expert_data.tar.gz](https://github.com/zihaosheng/CurricuVLM/releases/tag/v0.0.0).
+1. Install the following package and untar [expert_data.tar.gz](https://github.com/zihaosheng/CurricuVLM/releases/tag/v0.0.0).
 ```bash
 pip install imitation==1.0.0 --no-deps
 
@@ -93,11 +93,12 @@ pip install imitation==1.0.0 --no-deps
 tar -xzvf expert_data.tar.gz
 ```
 
-You can also run the following command to collect your own expert demonstration data:
+2. You can also run the following command to collect your own expert demonstration data:
 ```bash
 python collect_expert_data_set.py
 ```
 
+3. Training
 ```bash
 python run_baselines/imitation_BC.py --seed=123 --save_model
 python run_baselines/imitation_GAIL.py --seed=123 --save_model
