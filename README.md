@@ -93,7 +93,7 @@ python gpt_RLtrain.py \
     --seed 123 \
     --mode gpt \
     --save_model \
-    --openai_key YOUR_OPENAI_KEY
+    --openai_key sk-***
 ```
 
 ### 2. RL Baselines
