@@ -20,7 +20,7 @@
 
 
 ## 📢 News
-- **2026.02**: 🔥🔥 **CurricuVLM** is now fully open-sourced! Model weights coming soon!
+- **2026.02**: 🚀🚀 **CurricuVLM** is now fully open-sourced! Model weights coming soon!
 - **2026.01**: 🔥🔥 **CurricuVLM** has been accepted to *Transportation Research Part C: Emerging Technologies*!
 
 
