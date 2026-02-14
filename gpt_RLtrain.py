@@ -1,3 +1,4 @@
+import uuid
 import numpy as np
 import torch
 import argparse
@@ -5,7 +6,7 @@ import os
 
 from PIL import Image
 
-from advgen.gpt_utils import query_gpt_recommendation, AgentPerformanceTracker, transform_positions
+from advgen.gpt_utils import query_gpt_recommendation
 from metadrive.envs.real_data_envs.waymo_env import WaymoEnv
 from advgen.adv_generator_gpt import AdvGenerator
 
@@ -149,7 +150,6 @@ if __name__ == "__main__":
     num_advgen = 0
 
     success_scenarios = []
-    tracker = AgentPerformanceTracker()
     is_collision = False
     collision_t = None
     collision_figs_dir = logger.log_dir + 'collision_figs/'
@@ -194,28 +194,14 @@ if __name__ == "__main__":
 
         if env.vehicle.crash_vehicle and not is_collision:
             image = Image.fromarray(rendered.astype(np.uint8))
-            image.save(os.path.join(current_collision_figs_dir, "{}.png".format(t)))
+            cs_path = os.path.join(current_collision_figs_dir, "{}.png".format(uuid.uuid4().hex))
+            image.save(cs_path)
+            adv_generator.collision_figs.append(cs_path)
             collision_t = t
             is_collision = True
             adv_generator.collision_agent = env.vehicle.crash_vehicle
 
         if collision_t is not None and t == collision_t + 1:
-            ego_obj = env.engine.get_object('default_agent').get('default_agent')
-            ego_p = ego_obj.position
-            ego_h = ego_obj.heading_theta
-            try:  # the collision object may not exist in the next moment
-                adv_obj = env.engine.get_object(adv_generator.collision_agent).get(adv_generator.collision_agent)
-                adv_p = adv_obj.position
-                adv_h = adv_obj.heading_theta
-                adv_pt, adv_ht = transform_positions(ego_p, ego_h, adv_p, adv_h)
-                cs = dict(ego_vehicle=dict(position=[0., 0.], heading=0., width=ego_obj.top_down_width,
-                                           length=ego_obj.top_down_length),
-                          adv_vehicle=dict(position=list(np.round(adv_pt, 2)), heading=np.round(adv_ht, 3),
-                                           width=adv_obj.top_down_width, length=adv_obj.top_down_length))
-                print(cs)
-                adv_generator.collision_figs.append(cs)
-            except:
-                pass
             collision_t = None
 
         # Store data in replay buffer
