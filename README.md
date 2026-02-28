@@ -54,16 +54,17 @@ conda create -y -n curricuvlm python=3.9
 conda activate curricuvlm
 ```
 
-Install PyTorch (CUDA 11.6):
-
-```bash
-pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu116
-```
-
-Install the remaining dependencies:
+Install the main dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
+
+Install TensorFlow and PyTorch (CUDA 11.6):
+
+```bash
+pip install tensorflow==2.11.0
+pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu116
 ```
 
 
