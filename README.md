@@ -123,7 +123,7 @@ python run_baselines/sb3_PPOtrain.py --seed 123 --mode replay --save_model
 #### (b) Safe RL (OmniSafe)
 
 Before running safe RL baselines, copy the following:
-```
+```yaml
 SafeMetaDrive:
   env_cfgs:
   # safe meta drive configurations. More details refer to https://github.com/decisionforce/EGPO
