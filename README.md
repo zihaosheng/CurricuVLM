@@ -52,6 +52,7 @@ cd CurricuVLM
 
 conda create -y -n curricuvlm python=3.9
 conda activate curricuvlm
+PYTHONPATH=. 
 ```
 
 Install the main dependencies:
@@ -60,13 +61,23 @@ Install the main dependencies:
 pip install -r requirements.txt
 ```
 
-Install TensorFlow and PyTorch (CUDA 11.6):
-
+GPU is required, then install TensorFlow:
 ```bash
 pip install tensorflow==2.11.0
+```
+Note: You may encounter the following pip dependency ERROR about `protobuf` when installing `TensorFlow`:
+```bash
+# ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+# wandb 0.26.1 requires protobuf!=5.28.0,!=5.29.0,<8,>4.21.0, but you have protobuf 3.19.6 which is incompatible.
+```
+If so, install the following to proceed:
+```bash
+pip install wandb==0.13.11
+```
+Install PyTorch (CUDA 11.6):
+```bash
 pip install torch==1.12.0+cu116 torchvision==0.13.0+cu116 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu116
 ```
-
 
 ### 2. Pre-trained Models and Dataset
 
@@ -97,6 +108,8 @@ python gpt_RLtrain.py \
     --save_model \
     --openai_key sk-***
 ```
+> If everything is set up correctly, a MetaDrive simulation window will pop up as follows:
+![MetaDrive simulation window](https://private-user-images.githubusercontent.com/48112700/571075499-18ef2ec9-6382-4ce8-87eb-b13e5de1335d.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzc2NjE1MzIsIm5iZiI6MTc3NzY2MTIzMiwicGF0aCI6Ii80ODExMjcwMC81NzEwNzU0OTktMThlZjJlYzktNjM4Mi00Y2U4LTg3ZWItYjEzZTVkZTEzMzVkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA1MDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNTAxVDE4NDcxMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQyMWVkY2Y5YzQzZDI2OTdjYWE5ZjUwMzI1NjVkODg1MWFlY2I2MmNhZmIwNjJkMWZkNDY0NjZkN2YwODhjNTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.cxl0c4nxrWnOY7rlrXWcPrQT_JmYiE8lPGHmKj05WNM)
 
 ### 2. RL Baselines
 
@@ -109,14 +122,24 @@ python run_baselines/sb3_PPOtrain.py --seed 123 --mode replay --save_model
 
 #### (b) Safe RL (OmniSafe)
 
-Before running safe RL baselines, copy the required `env_cfgs` from the
-[OmniSafe configuration file](https://github.com/PKU-Alignment/omnisafe/blob/15603dd7a654a991d0a4648216b69d60b81a6366/omnisafe/configs/off-policy/SACLag.yaml#L276):
-
+Before running safe RL baselines, copy the following:
 ```
-omnisafe/configs/off-policy/SACLag.yaml
+SafeMetaDrive:
+  env_cfgs:
+  # safe meta drive configurations. More details refer to https://github.com/decisionforce/EGPO
+    # max iterations of interactions
+    horizon: 1500
+    # whether to use random traffic
+    random_traffic: False
+    # the penalty when crash into other vehicles
+    crash_vehicle_penalty: 1.
+    # the penalty when crash into other objects
+    crash_object_penalty: 0.5
+    # the penalty when out of road
+    out_of_road_penalty: 1.  # training configurations
 ```
 
-and append it to:
+and append it to the end of:
 
 ```
 ~/miniconda3/envs/curricuvlm/lib/python3.9/site-packages/omnisafe/configs/off-policy/YOUR_ALGO.yaml

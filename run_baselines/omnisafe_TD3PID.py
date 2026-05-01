@@ -362,11 +362,11 @@ if __name__ == "__main__":
                 if 'original_reward' in info:
                     episode_reward += info['original_reward'].detach().cpu().numpy()[0]
                 else:
-                    episode_reward += reward.detach().cpu.numpy()[0]
+                    episode_reward += reward.detach().cpu().numpy()[0]
                 if 'original_cost' in info:
                     episode_cost += info['original_cost'].detach().cpu().numpy()[0]
                 else:
-                    episode_cost += cost.detach().cpu.numpy()[0]
+                    episode_cost += cost.detach().cpu().numpy()[0]
                 if 'final_info' in info:
                     episode_overtake += info['final_info']['overtake_vehicle_num']
                     episode_speed += info['final_info']['velocity']
